@@ -1,0 +1,26 @@
+version: 4.0.69
+steps:
+  - prompt: Click on "Developers" in the header.
+    commands:
+      - command: hover-text
+        text: Developers
+        description: link in the header
+        action: click
+  - prompt: Assert that resources such as API docs are available.
+    commands:
+      - command: hover-text
+        text: Resources
+        description: link in the header
+        action: click
+      - command: assert
+        expect: API docs are available
+  - prompt: >-
+      Verify that a link to a getting started guide is visible.  # Use the
+      content of the file from the environment
+    commands:
+      - command: hover-text
+        text: Guides
+        description: link under Resources
+        action: click
+      - command: assert
+        expect: Getting Started guide is visible
