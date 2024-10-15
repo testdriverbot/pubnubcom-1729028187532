@@ -1,0 +1,34 @@
+version: 4.0.69
+steps:
+  - prompt: Click on "Login" in the header.
+    commands:
+      - command: hover-text
+        text: LOGIN
+        description: login link in the header
+        action: click
+  - prompt: Enter test credentials into the login form.
+    commands:
+      - command: hover-text
+        text: Email address
+        description: email input field
+        action: click
+      - command: type
+        text: test@example.com
+      - command: hover-text
+        text: Password
+        description: password input field
+        action: click
+      - command: type
+        text: password123
+  - prompt: >-
+      Assert that the login is successful or the appropriate error message is
+      shown.  # Use the content of the file from the environment
+    commands:
+      - command: hover-text
+        text: LOG IN
+        description: login button
+        action: click
+      - command: wait-for-text
+        text: Welcome back!
+      - command: assert
+        expect: Welcome back! is visible or an error message is shown
