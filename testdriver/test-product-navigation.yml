@@ -1,0 +1,37 @@
+version: 4.0.69
+steps:
+  - prompt: Click on "Products" in the header.
+    commands:
+      - command: hover-text
+        text: Products
+        description: link in the header
+        action: click
+  - prompt: Assert that the products page is displayed.
+    commands:
+      - command: assert
+        expect: PUBNUB PLATFORM is visible
+  - prompt: Assert that the products page is displayed.
+    commands:
+      - command: hover-text
+        text: Overview
+        description: link under PUBNUB PLATFORM in the dropdown
+        action: click
+      - command: assert
+        expect: PUBNUB PLATFORM is visible
+  - prompt: >-
+      Verify that a list of products is shown.  # Use the content of the file
+      from the environment
+    commands:
+      - command: scroll-until-text
+        text: Features
+        direction: down
+      - command: assert
+        expect: Features section is visible
+  - prompt: >-
+      Verify that a list of products is shown.  # Use the content of the file
+      from the environment
+    commands:
+      - command: scroll
+        direction: down
+      - command: assert
+        expect: list of products is visible
