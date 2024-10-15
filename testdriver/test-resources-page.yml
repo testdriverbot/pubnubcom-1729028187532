@@ -1,0 +1,27 @@
+version: 4.0.69
+steps:
+  - prompt: Click on "Resources" in the header.
+    commands:
+      - command: hover-text
+        text: Resources
+        description: link in the header
+        action: click
+  - prompt: Assert that the resources page loads.
+    commands:
+      - command: hover-text
+        text: Blog
+        description: link in the resources dropdown
+        action: click
+      - command: wait-for-text
+        text: Blog
+      - command: assert
+        expect: the resources page with Blog is loaded
+  - prompt: >-
+      Verify the presence of case studies or whitepapers.  # Use the content of
+      the file from the environment
+    commands:
+      - command: scroll-until-text
+        text: Case Studies
+        direction: down
+      - command: assert
+        expect: case studies or whitepapers are present
